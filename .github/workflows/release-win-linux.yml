@@ -23,6 +23,8 @@ concurrency:
 env:
   SOURCE_REPO: ${{ secrets.SOURCE_REPO }}
   RELEASE_REPO: ${{ secrets.RELEASE_REPO }}
+  # gh CLI uses GH_TOKEN directly — do not run `gh auth login` when this is set.
+  GH_TOKEN: ${{ secrets.RELEASE_REPO_PAT }}
 
 jobs:
   release-windows:
@@ -42,11 +44,15 @@ jobs:
           echo "version=$V" >> "$GITHUB_OUTPUT"
           echo "tag=v$V" >> "$GITHUB_OUTPUT"
 
-      - name: Auth gh (releases repo)
+      - name: Validate secrets
         shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.RELEASE_REPO_PAT }}
-        run: echo "$GH_TOKEN" | gh auth login --with-token
+        run: |
+          missing=0
+          [[ -z "${{ secrets.RELEASE_REPO_PAT }}" ]] && { echo "::error::Missing RELEASE_REPO_PAT"; missing=1; }
+          [[ -z "${{ secrets.SOURCE_REPO_PAT }}" ]] && { echo "::error::Missing SOURCE_REPO_PAT"; missing=1; }
+          [[ -z "${{ env.SOURCE_REPO }}" ]] && { echo "::error::Missing SOURCE_REPO secret"; missing=1; }
+          [[ -z "${{ env.RELEASE_REPO }}" ]] && { echo "::error::Missing RELEASE_REPO secret"; missing=1; }
+          exit "$missing"
 
       - name: Verify macOS release exists
         shell: bash
@@ -85,7 +91,6 @@ jobs:
           RELEASE_REPO: ${{ env.RELEASE_REPO }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
-          GH_TOKEN: ${{ secrets.RELEASE_REPO_PAT }}
         run: bash scripts/publish-github-release-windows.sh "${{ steps.ver.outputs.version }}" --no-bump
 
   release-linux:
@@ -105,10 +110,14 @@ jobs:
           echo "version=$V" >> "$GITHUB_OUTPUT"
           echo "tag=v$V" >> "$GITHUB_OUTPUT"
 
-      - name: Auth gh (releases repo)
-        env:
-          GH_TOKEN: ${{ secrets.RELEASE_REPO_PAT }}
-        run: echo "$GH_TOKEN" | gh auth login --with-token
+      - name: Validate secrets
+        run: |
+          missing=0
+          [[ -z "${{ secrets.RELEASE_REPO_PAT }}" ]] && { echo "::error::Missing RELEASE_REPO_PAT"; missing=1; }
+          [[ -z "${{ secrets.SOURCE_REPO_PAT }}" ]] && { echo "::error::Missing SOURCE_REPO_PAT"; missing=1; }
+          [[ -z "${{ env.SOURCE_REPO }}" ]] && { echo "::error::Missing SOURCE_REPO secret"; missing=1; }
+          [[ -z "${{ env.RELEASE_REPO }}" ]] && { echo "::error::Missing RELEASE_REPO secret"; missing=1; }
+          exit "$missing"
 
       - name: Checkout source (private)
         uses: actions/checkout@v4
@@ -147,5 +156,4 @@ jobs:
           RELEASE_REPO: ${{ env.RELEASE_REPO }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
-          GH_TOKEN: ${{ secrets.RELEASE_REPO_PAT }}
         run: bash scripts/publish-github-release-linux.sh "${{ steps.ver.outputs.version }}" --no-bump
