@@ -57,8 +57,22 @@ jobs:
       - name: Verify macOS release exists
         shell: bash
         run: |
-          gh release view "${{ steps.ver.outputs.tag }}" --repo "${{ env.RELEASE_REPO }}" \
-            || { echo "::error::Release ${{ steps.ver.outputs.tag }} not found on ${{ env.RELEASE_REPO }}. Run macOS publish first."; exit 1; }
+          TAG="${{ steps.ver.outputs.tag }}"
+          REPO="${{ env.RELEASE_REPO }}"
+          echo "Looking for release $TAG on $REPO ..."
+          if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+            echo "Found release $TAG"
+            exit 0
+          fi
+          echo "::error title=macOS release missing::No GitHub release $TAG on $REPO."
+          echo "1) On your Mac, from the private source repo:"
+          echo "   RELEASE_REPO=$REPO pnpm publish:release ${TAG#v}"
+          echo "2) Confirm RELEASE_REPO secret on this repo matches where you upload (same as above)."
+          echo "3) Re-run this workflow (or push tag on source to dispatch again)."
+          echo ""
+          echo "Recent releases on $REPO (if token can read):"
+          gh release list --repo "$REPO" --limit 5 || echo "(could not list releases — check RELEASE_REPO_PAT Contents read on $REPO)"
+          exit 1
 
       - name: Checkout source (private)
         uses: actions/checkout@v4
@@ -81,8 +95,11 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install frontend deps
+        shell: bash
         working-directory: source
-        run: pnpm install --frozen-lockfile
+        run: |
+          test -f package.json || { echo "::error::No package.json in source/ — check SOURCE_REPO_PAT and tag ref"; exit 1; }
+          pnpm install --frozen-lockfile
 
       - name: Publish Windows (--no-bump)
         working-directory: source
@@ -147,8 +164,11 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install frontend deps
+        shell: bash
         working-directory: source
-        run: pnpm install --frozen-lockfile
+        run: |
+          test -f package.json || { echo "::error::No package.json in source/ — check SOURCE_REPO_PAT and tag ref"; exit 1; }
+          pnpm install --frozen-lockfile
 
       - name: Publish Linux (--no-bump)
         working-directory: source
