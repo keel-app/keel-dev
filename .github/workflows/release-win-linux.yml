@@ -93,6 +93,8 @@ jobs:
           cache-dependency-path: source/pnpm-lock.yaml
 
       - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-pc-windows-msvc
 
       - name: Install frontend deps
         shell: bash
@@ -101,11 +103,21 @@ jobs:
           test -f package.json || { echo "::error::No package.json in source/ — check SOURCE_REPO_PAT and tag ref"; exit 1; }
           pnpm install --frozen-lockfile
 
-      - name: Publish Windows (--no-bump)
+      - name: Publish Windows x64 (--no-bump)
         working-directory: source
         shell: bash
         env:
           RELEASE_REPO: ${{ env.RELEASE_REPO }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: bash scripts/publish-github-release-windows.sh "${{ steps.ver.outputs.version }}" --no-bump
+
+      - name: Publish Windows ARM64 (--no-bump)
+        working-directory: source
+        shell: bash
+        env:
+          RELEASE_REPO: ${{ env.RELEASE_REPO }}
+          WINDOWS_BUILD_TARGET: aarch64-pc-windows-msvc
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         run: bash scripts/publish-github-release-windows.sh "${{ steps.ver.outputs.version }}" --no-bump
@@ -170,10 +182,79 @@ jobs:
           test -f package.json || { echo "::error::No package.json in source/ — check SOURCE_REPO_PAT and tag ref"; exit 1; }
           pnpm install --frozen-lockfile
 
-      - name: Publish Linux (--no-bump)
+      - name: Publish Linux x64 (--no-bump)
         working-directory: source
         env:
           RELEASE_REPO: ${{ env.RELEASE_REPO }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: bash scripts/publish-github-release-linux.sh "${{ steps.ver.outputs.version }}" --no-bump
+
+  release-linux-arm64:
+    runs-on: ubuntu-24.04-arm
+    needs: release-linux
+    timeout-minutes: 120
+    steps:
+      - name: Resolve version
+        id: ver
+        run: |
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            V="${{ github.event.client_payload.version }}"
+          else
+            V="${{ github.event.inputs.version }}"
+          fi
+          V="${V#v}"
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "tag=v$V" >> "$GITHUB_OUTPUT"
+
+      - name: Validate secrets
+        run: |
+          missing=0
+          [[ -z "${{ secrets.RELEASE_REPO_PAT }}" ]] && { echo "::error::Missing RELEASE_REPO_PAT"; missing=1; }
+          [[ -z "${{ secrets.SOURCE_REPO_PAT }}" ]] && { echo "::error::Missing SOURCE_REPO_PAT"; missing=1; }
+          [[ -z "${{ env.SOURCE_REPO }}" ]] && { echo "::error::Missing SOURCE_REPO secret"; missing=1; }
+          [[ -z "${{ env.RELEASE_REPO }}" ]] && { echo "::error::Missing RELEASE_REPO secret"; missing=1; }
+          exit "$missing"
+
+      - name: Checkout source (private)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          token: ${{ secrets.SOURCE_REPO_PAT }}
+          ref: ${{ steps.ver.outputs.tag }}
+          path: source
+
+      - name: Linux build deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev \
+            patchelf libssl-dev
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: source/pnpm-lock.yaml
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install frontend deps
+        shell: bash
+        working-directory: source
+        run: |
+          test -f package.json || { echo "::error::No package.json in source/ — check SOURCE_REPO_PAT and tag ref"; exit 1; }
+          pnpm install --frozen-lockfile
+
+      - name: Publish Linux ARM64 (--no-bump)
+        working-directory: source
+        env:
+          RELEASE_REPO: ${{ env.RELEASE_REPO }}
+          LINUX_BUILD_TARGET: aarch64-unknown-linux-gnu
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         run: bash scripts/publish-github-release-linux.sh "${{ steps.ver.outputs.version }}" --no-bump

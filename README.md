@@ -42,8 +42,8 @@ Official releases:
 | Platform | Format |
 |----------|--------|
 | macOS | `.dmg` (Apple Silicon & Intel) |
-| Windows | `.msi` / `.exe` installer |
-| Linux | `.AppImage`, `.deb` |
+| Windows | x64 + ARM64 — `.msi` / `.exe` installer |
+| Linux | x64 (amd64) + ARM64 — `.AppImage`, `.deb` |
 
 The app checks for updates in **Settings → Application**.
 
