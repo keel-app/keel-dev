@@ -19,19 +19,25 @@ Available on **macOS**, **Windows**, and **Linux**.
 
 ---
 
+
+
 ## Features
 
-| | |
-|---|---|
-| **Web servers** | Apache, Nginx, Caddy |
-| **Runtimes** | PHP (multiple versions), Node.js, Bun, Python |
-| **Databases** | MariaDB, MySQL, PostgreSQL, MongoDB, Redis |
-| **Dev tools** | Composer, phpMyAdmin, Adminer, Mailpit, Git |
-| **Websites** | Virtual hosts, SSL (Keel CA), `/etc/hosts` |
-| **Tunnels** | Cloudflare, bore, chisel, rathole… |
-| **i18n** | Vietnamese, English, and 18+ locales |
+
+|                 |                                               |
+| --------------- | --------------------------------------------- |
+| **Web servers** | Apache, Nginx, Caddy                          |
+| **Runtimes**    | PHP (multiple versions), Node.js, Bun, Python |
+| **Databases**   | MariaDB, MySQL, PostgreSQL, MongoDB, Redis    |
+| **Dev tools**   | Composer, phpMyAdmin, Adminer, Mailpit, Git   |
+| **Websites**    | Virtual hosts, SSL (Keel CA), `/etc/hosts`    |
+| **Tunnels**     | Cloudflare, bore, chisel, rathole…            |
+| **i18n**        | Vietnamese, English, and 18+ locales          |
+
 
 ---
+
+
 
 ## Download
 
@@ -39,15 +45,19 @@ Official releases:
 
 **[Releases →](https://github.com/sanhpotter/Keel/releases)**
 
-| Platform | Format |
-|----------|--------|
-| macOS | `.dmg` (Apple Silicon & Intel) |
-| Windows | x64 + ARM64 — `.msi` / `.exe` installer |
-| Linux | x64 (amd64) + ARM64 — `.AppImage`, `.deb` |
+
+| Platform | Format                                    |
+| -------- | ----------------------------------------- |
+| macOS    | `.dmg` (Apple Silicon & Intel)            |
+| Windows  | x64 + ARM64 — `.msi` / `.exe` installer   |
+| Linux    | x64 (amd64) + ARM64 — `.AppImage`, `.deb` |
+
 
 The app checks for updates in **Settings → Application**.
 
 ---
+
+
 
 ## Quick start
 
@@ -58,13 +68,60 @@ The app checks for updates in **Settings → Application**.
 
 Data is stored at:
 
-| OS | Path |
-|----|------|
-| macOS | `~/Library/Application Support/Keel/` |
-| Windows | `%APPDATA%\com.keel.app\` |
-| Linux | `~/.local/share/com.keel.app/` |
+
+| OS      | Path                                  |
+| ------- | ------------------------------------- |
+| macOS   | `~/Library/Application Support/Keel/` |
+| Windows | `%APPDATA%\com.keel.app\`             |
+| Linux   | `~/.local/share/com.keel.app/`        |
+
 
 ---
+
+
+
+<!-- DONATE START -->
+## 💎 Crypto Donations
+
+**Keel is free — and built by one person, not a venture-backed team.** If it saved you a weekend of Docker wrangling or replaced a paid local stack, a small crypto tip is the fastest way to say thanks: it goes straight into signed releases, Apple notarization, and the features you’ll want next. No account, no subscription — just send on the network below if you feel like giving back.
+
+<br />
+
+### USDT · TRC20 (TRON)
+
+```text
+TE4Q2msgCw75EETsjkEqNxvDymFrRobvtE
+```
+
+<br />
+
+### USDT · BSC BNB Smart Chain (BEP20)
+
+```text
+0x2f646d5009f4b54fc7e7191ac60df14453814229
+```
+
+<br />
+
+### BTC · Bitcoin (Native SegWit)
+
+```text
+bc1qjst9lckluf0m9zznug8txjx47vka8kzfqjhet2
+```
+
+<br />
+
+> Copy the address exactly and double-check the **network** before sending. Keel is not affiliated with any chain or exchange.
+
+<!-- DONATE END -->
+
+---
+
+
+
+## Terms
+
+Summary: [TERMS.md](./TERMS.md) — free to use; no warranty; third-party packages have their own licenses.
 
 ## Links
 
@@ -72,6 +129,4 @@ Data is stored at:
 
 ---
 
-<p align="center">
-  <sub>Keel — local dev, zero host pollution.</sub>
-</p>
+Keel — local dev, zero host pollution.
