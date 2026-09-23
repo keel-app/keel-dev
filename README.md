@@ -123,10 +123,6 @@ bc1qjst9lckluf0m9zznug8txjx47vka8kzfqjhet2
 
 Summary: [TERMS.md](./TERMS.md) — free to use; no warranty; third-party packages have their own licenses.
 
-## Links
-
-- **Issues & releases:** [github.com/sanhpotter/Keel](https://github.com/sanhpotter/Keel)
-
 ---
 
 Keel — local dev, zero host pollution.
