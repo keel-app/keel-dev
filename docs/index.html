@@ -6,9 +6,29 @@
 <title>Keel – Local PHP, Node.js &amp; database dev stack without Docker</title>
 <meta name="description" content="Keel installs and runs PHP, Node.js, Caddy, Nginx, Apache, MariaDB, MySQL, PostgreSQL, Redis and more on macOS, Windows and Linux. Native, isolated, free. No Docker.">
 <link rel="canonical" href="https://keel.keellabs.dev/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://keel.keellabs.dev/">
+<link rel="alternate" hreflang="vi" href="https://keel.keellabs.dev/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://keel.keellabs.dev/zh/">
+<link rel="alternate" hreflang="ja" href="https://keel.keellabs.dev/ja/">
+<link rel="alternate" hreflang="ko" href="https://keel.keellabs.dev/ko/">
+<link rel="alternate" hreflang="es" href="https://keel.keellabs.dev/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://keel.keellabs.dev/pt/">
+<link rel="alternate" hreflang="ru" href="https://keel.keellabs.dev/ru/">
+<link rel="alternate" hreflang="x-default" href="https://keel.keellabs.dev/">
+<!--/hreflang-->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Keel">
+<!--oglocale-->
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="vi_VN">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="ru_RU">
+<!--/oglocale-->
 <meta property="og:url" content="https://keel.keellabs.dev/">
 <meta property="og:title" content="Keel – Your local dev stack, without Docker">
 <meta property="og:description" content="PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis and more, installed natively in a click. Free for macOS, Windows and Linux.">
@@ -23,6 +43,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="home.css">
+<style>:root { --your-system: "Your system"; }</style>
 </head>
 <body>
 
@@ -35,6 +56,7 @@
       <a href="#download">Download</a>
       <a href="#faq">FAQ</a>
     </nav>
+    <!--langmenu--><details class="lang-menu"><summary aria-label="Language / Language"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8ZM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4ZM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4H4.3Zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16Zm3-8h-3a8 8 0 0 1 4.4-3.6A15.7 15.7 0 0 0 8.1 8ZM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4Zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4Zm.3 5.6a15.7 15.7 0 0 0 1.4-3.6h3a8 8 0 0 1-4.4 3.6Zm1.7-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4h-3.4Z"/></svg><span>Language</span></summary><ul><li><a href="./" hreflang="en" lang="en" aria-current="page">English</a></li><li><a href="vi/" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="ko/" hreflang="ko" lang="ko">한국어</a></li><li><a href="es/" hreflang="es" lang="es">Español</a></li><li><a href="pt/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="ru/" hreflang="ru" lang="ru">Русский</a></li></ul></details><!--/langmenu-->
   </div>
 </header>
 
@@ -44,9 +66,7 @@
       <h1>Your local dev stack, without Docker.</h1>
       <div class="hero-grid">
       <div>
-        <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis and dozens more, installed
-          natively in a click. Sites with HTTPS, tunnels and dev mail in the same app. Remove Keel and your
-          system is exactly as it was.</p>
+        <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis and dozens more, installed natively in a click. Sites with HTTPS, tunnels and dev mail in the same app. Remove Keel and your system is exactly as it was.</p>
         <div class="cta">
           <a class="button primary" id="primary-download" href="#download">Download Keel</a>
           <a class="button ghost" href="#features">See what it does</a>
@@ -77,54 +97,20 @@ v22 · via Keel PATH</pre>
   </section>
 
   <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
-
   <section id="features" class="deep">
     <div class="wrap">
       <h2>Why developers switch to Keel</h2>
       <p class="section-lead">Everything a local web stack needs, without containers to babysit.</p>
       <div class="features">
-        <article class="card">
-          <h3>Native, not containers</h3>
-          <p>Keel downloads real binaries and runs them directly. No Docker Desktop, no VM, no waiting for images,
-            no fans spinning up when you open a project.</p>
-        </article>
-        <article class="card">
-          <h3>Ready in one wizard</h3>
-          <p>Pick a role, Full-stack PHP, Modern JS/API or Custom, and Keel installs and configures the whole
-            stack in one go.</p>
-        </article>
-        <article class="card">
-          <h3>Leaves no mess behind</h3>
-          <p>Packages, configs and data live in Keel's own folder, apart from Homebrew and your system PATH.
-            Uninstall Keel and nothing is left behind.</p>
-        </article>
-        <article class="card">
-          <h3>Real HTTPS on <code>.test</code></h3>
-          <p>Create a site and get a virtual host, a local certificate from Keel's own CA and the hosts entry,
-            all from one form.</p>
-        </article>
-        <article class="card">
-          <h3>Many versions, side by side</h3>
-          <p>Run several PHP versions, edit <code>php.ini</code> and extensions visually, switch per site.</p>
-        </article>
-        <article class="card">
-          <h3>Your terminal, too</h3>
-          <p>Add Keel to PATH and use <code>php</code>, <code>node</code>, <code>composer</code>, <code>mysql</code>
-            in any terminal, the same versions your sites use.</p>
-        </article>
-        <article class="card">
-          <h3>Share a local site</h3>
-          <p>Expose a site with Cloudflare Tunnel, bore, chisel, frp or rathole, without leaving the app.</p>
-        </article>
-        <article class="card">
-          <h3>Catch every email</h3>
-          <p>Mailpit catches what your app sends, so test emails never reach a real inbox.</p>
-        </article>
-        <article class="card">
-          <h3>Speaks your language</h3>
-          <p>20 languages, works with VoiceOver and other screen readers, full keyboard navigation, and respects
-            Reduce motion.</p>
-        </article>
+        <article class="card"><h3>Native, not containers</h3><p>Keel downloads real binaries and runs them directly. No Docker Desktop, no VM, no waiting for images, no fans spinning up when you open a project.</p></article>
+        <article class="card"><h3>Ready in one wizard</h3><p>Choose an initial stack, Web &amp; Full Stack, Modern JS &amp; API or Minimal / Custom, and Keel installs and configures it in one go.</p></article>
+        <article class="card"><h3>Leaves no mess behind</h3><p>Packages, configs and data live in Keel's own folder, apart from Homebrew and your system PATH. Uninstall Keel and nothing is left behind.</p></article>
+        <article class="card"><h3>Real HTTPS on <code>.test</code></h3><p>Create a site and get a virtual host, a local certificate from Keel's own CA and the hosts entry, all from one form.</p></article>
+        <article class="card"><h3>Many versions, side by side</h3><p>Run several PHP versions, edit <code>php.ini</code> and extensions visually, switch per site.</p></article>
+        <article class="card"><h3>Your terminal, too</h3><p>Add Keel to PATH and use <code>php</code>, <code>node</code>, <code>composer</code>, <code>mysql</code> in any terminal, the same versions your sites use.</p></article>
+        <article class="card"><h3>Share a local site</h3><p>Expose a site with Cloudflare Tunnel, bore, chisel, frp or rathole, without leaving the app.</p></article>
+        <article class="card"><h3>Catch every email</h3><p>Mailpit catches what your app sends, so test emails never reach a real inbox.</p></article>
+        <article class="card"><h3>Speaks your language</h3><p>20 languages, works with VoiceOver and other screen readers, full keyboard navigation, and respects Reduce motion.</p></article>
       </div>
     </div>
   </section>
@@ -171,8 +157,7 @@ v22 · via Keel PATH</pre>
           </span>
         </article>
       </div>
-      <p class="after">Then open Keel, pick a role in the setup wizard, and create your first site in <strong>Websites</strong>.
-        Release notes and older versions: <a href="https://github.com/keel-app/keel-dev/releases">GitHub Releases</a>.</p>
+      <p class="after">Then open Keel, choose an initial stack in the setup wizard, and create your first site in <strong>Websites</strong>. Release notes and older versions: <a href="https://github.com/keel-app/keel-dev/releases">GitHub Releases</a>.</p>
     </div>
   </section>
 
@@ -181,8 +166,7 @@ v22 · via Keel PATH</pre>
       <h2>Questions</h2>
       <details>
         <summary>Is Keel really free?</summary>
-        <p>Yes, for personal and commercial local development. Keel is built by one person; if it saves you time,
-          you can tip from the app or the <a href="https://github.com/keel-app/keel-dev#-crypto-donations">project page</a>.</p>
+        <p>Yes, for personal and commercial local development. Keel is built by one person; if it saves you time, you can tip from the app or the <a href="https://github.com/keel-app/keel-dev#-crypto-donations">project page</a>.</p>
       </details>
       <details>
         <summary>Do I need Docker?</summary>
@@ -190,8 +174,7 @@ v22 · via Keel PATH</pre>
       </details>
       <details>
         <summary>Will it clash with Homebrew or my system PHP?</summary>
-        <p>No. Everything Keel installs lives in its own folder. Your terminal only sees Keel's versions if you choose
-          to add Keel to PATH in Settings.</p>
+        <p>No. Everything Keel installs lives in its own folder. Your terminal only sees Keel's versions if you choose to add Keel to PATH in Settings.</p>
       </details>
       <details>
         <summary>Where is my data, and how do I remove Keel completely?</summary>
@@ -204,8 +187,7 @@ v22 · via Keel PATH</pre>
       </details>
       <details>
         <summary>How do updates work?</summary>
-        <p>Keel checks for new versions in the background and installs signed updates when you restart it.
-          You can also check in Settings → Application.</p>
+        <p>Keel checks for new versions in the background and installs signed updates when you restart it. You can also check in Settings → Application.</p>
       </details>
     </div>
   </section>
@@ -218,6 +200,7 @@ v22 · via Keel PATH</pre>
   </div>
 </footer>
 
+<script>window.KEEL_I18N = {"download_for": "Download for {os}", "release_note": "Keel {version}. Free for personal and commercial local development."};</script>
 <script src="site.js"></script>
 </body>
 </html>

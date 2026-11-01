@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{x:meta_title}}</title>
+<meta name="description" content="{{a:meta_description}}">
+<link rel="canonical" href="{{canonical}}">
+<!--hreflang-->{{hreflang}}<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Keel">
+<!--oglocale-->{{oglocale}}<!--/oglocale-->
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:title" content="{{a:og_title}}">
+<meta property="og:description" content="{{a:og_description}}">
+<meta property="og:image" content="https://keel.keellabs.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1326">
+<script type="application/ld+json">{{ldjson}}</script>
+<link rel="icon" href="{{base}}img/keel-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="{{fonts}}" rel="stylesheet">
+<link rel="stylesheet" href="{{base}}home.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="{{home}}"><img src="{{base}}img/keel-64.png" alt="" width="30" height="30"><span>Keel</span></a>
+    <nav aria-label="{{a:nav_aria}}">
+      <a href="#features">{{t:nav_features}}</a>
+      <a href="#stack">{{t:nav_stack}}</a>
+      <a href="#download">{{t:nav_download}}</a>
+      <a href="#faq">{{t:nav_faq}}</a>
+    </nav>
+    <!--langmenu-->{{langmenu}}<!--/langmenu-->
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>{{t:h1}}</h1>
+      <div class="hero-grid">
+      <div>
+        <p class="lead">{{t:lead}}</p>
+        <div class="cta">
+          <a class="button primary" id="primary-download" href="#download">{{t:cta_download}}</a>
+          <a class="button ghost" href="#features">{{t:cta_features}}</a>
+        </div>
+        <p class="version-line">{{t:version_line}}</p>
+      </div>
+
+      <figure class="window" aria-label="{{a:window_aria}}">
+        <div class="window-bar"><span></span><span></span><span></span><b>Keel</b></div>
+        <div class="window-body">
+          <div class="svc"><i class="dot on"></i><span class="name">Caddy</span><span class="meta">:8080 · :8443</span><span class="pill">{{t:running}}</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">PHP 8.3</span><span class="meta">FPM</span><span class="pill">{{t:running}}</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">MariaDB 11</span><span class="meta">:3306</span><span class="pill">{{t:running}}</span></div>
+          <div class="svc"><i class="dot"></i><span class="name">Redis</span><span class="meta">:6379</span><span class="pill off">{{t:stopped}}</span></div>
+          <div class="sites">
+            <p class="label">{{t:websites}}</p>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://shop.test<span class="tag">Laravel</span></div>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://blog.test<span class="tag">WordPress</span></div>
+          </div>
+          <pre class="term"><span class="p">$</span> php -v
+PHP 8.3 (cli) · via Keel PATH
+<span class="p">$</span> node -v
+v22 · via Keel PATH</pre>
+        </div>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
+  <section id="features" class="deep">
+    <div class="wrap">
+      <h2>{{t:features_title}}</h2>
+      <p class="section-lead">{{t:features_lead}}</p>
+      <div class="features">
+        <article class="card"><h3>{{t:f1_t}}</h3><p>{{t:f1_p}}</p></article>
+        <article class="card"><h3>{{t:f2_t}}</h3><p>{{t:f2_p}}</p></article>
+        <article class="card"><h3>{{t:f3_t}}</h3><p>{{t:f3_p}}</p></article>
+        <article class="card"><h3>{{t:f4_t}}</h3><p>{{t:f4_p}}</p></article>
+        <article class="card"><h3>{{t:f5_t}}</h3><p>{{t:f5_p}}</p></article>
+        <article class="card"><h3>{{t:f6_t}}</h3><p>{{t:f6_p}}</p></article>
+        <article class="card"><h3>{{t:f7_t}}</h3><p>{{t:f7_p}}</p></article>
+        <article class="card"><h3>{{t:f8_t}}</h3><p>{{t:f8_p}}</p></article>
+        <article class="card"><h3>{{t:f9_t}}</h3><p>{{t:f9_p}}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="wrap">
+      <h2>{{t:stack_title}}</h2>
+      <p class="section-lead">{{t:stack_lead}}</p>
+      <dl class="stack">
+        <div><dt>{{t:s1_t}}</dt><dd>{{t:s1_d}}</dd></div>
+        <div><dt>{{t:s2_t}}</dt><dd>{{t:s2_d}}</dd></div>
+        <div><dt>{{t:s3_t}}</dt><dd>{{t:s3_d}}</dd></div>
+        <div><dt>{{t:s4_t}}</dt><dd>{{t:s4_d}}</dd></div>
+        <div><dt>{{t:s5_t}}</dt><dd>{{t:s5_d}}</dd></div>
+        <div><dt>{{t:s6_t}}</dt><dd>{{t:s6_d}}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="wrap">
+      <h2>{{t:download_title}}</h2>
+      <p class="section-lead" id="release-note">{{t:release_note_default}}</p>
+      <div class="downloads">
+        <article class="card" data-os="macos">
+          <h3>macOS</h3>
+          <p class="meta">{{t:mac_meta}}</p>
+          <a class="button primary" data-asset="dmg" href="https://github.com/keel-app/keel-dev/releases/latest">{{t:mac_btn}}</a>
+        </article>
+        <article class="card" data-os="windows">
+          <h3>Windows</h3>
+          <p class="meta">{{t:win_meta}}</p>
+          <a class="button primary" data-asset="msi-x64" href="https://github.com/keel-app/keel-dev/releases/latest">{{t:win_btn}}</a>
+          <a class="small" data-asset="msi-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">{{t:win_arm}}</a>
+        </article>
+        <article class="card" data-os="linux">
+          <h3>Linux</h3>
+          <p class="meta">{{t:linux_meta}}</p>
+          <a class="button primary" data-asset="appimage-x64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage (x64)</a>
+          <span class="small-row">
+            <a class="small" data-asset="deb-x64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb x64</a>
+            <a class="small" data-asset="appimage-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage ARM64</a>
+            <a class="small" data-asset="deb-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb ARM64</a>
+          </span>
+        </article>
+      </div>
+      <p class="after">{{t:after}}</p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap narrow">
+      <h2>{{t:faq_title}}</h2>
+      <details>
+        <summary>{{t:q1}}</summary>
+        <p>{{t:a1}}</p>
+      </details>
+      <details>
+        <summary>{{t:q2}}</summary>
+        <p>{{t:a2}}</p>
+      </details>
+      <details>
+        <summary>{{t:q3}}</summary>
+        <p>{{t:a3}}</p>
+      </details>
+      <details>
+        <summary>{{t:q4}}</summary>
+        <p>{{t:a4}}</p>
+        <ul>
+          <li>macOS: <code>~/Library/Application Support/Keel/</code></li>
+          <li>Windows: <code>%APPDATA%\com.keel.app\</code></li>
+          <li>Linux: <code>~/.local/share/com.keel.app/</code></li>
+        </ul>
+      </details>
+      <details>
+        <summary>{{t:q5}}</summary>
+        <p>{{t:a5}}</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>{{t:made_by}}</span>
+    <span><a href="https://github.com/keel-app/keel-dev/blob/main/TERMS.md">{{t:terms}}</a> · <a href="https://github.com/keel-app/keel-dev/releases">{{t:releases}}</a></span>
+  </div>
+</footer>
+
+<script>window.KEEL_I18N = {{i18n}};</script>
+<script src="{{base}}site.js"></script>
+</body>
+</html>

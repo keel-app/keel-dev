@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keel – Stack dev PHP, Node.js &amp; CSDL cục bộ, không Docker</title>
+<meta name="description" content="Keel cài và chạy PHP, Node.js, Caddy, Nginx, Apache, MariaDB, MySQL, PostgreSQL, Redis và nhiều hơn trên macOS, Windows, Linux. Native, tách biệt, miễn phí.">
+<link rel="canonical" href="https://keel.keellabs.dev/vi/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://keel.keellabs.dev/">
+<link rel="alternate" hreflang="vi" href="https://keel.keellabs.dev/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://keel.keellabs.dev/zh/">
+<link rel="alternate" hreflang="ja" href="https://keel.keellabs.dev/ja/">
+<link rel="alternate" hreflang="ko" href="https://keel.keellabs.dev/ko/">
+<link rel="alternate" hreflang="es" href="https://keel.keellabs.dev/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://keel.keellabs.dev/pt/">
+<link rel="alternate" hreflang="ru" href="https://keel.keellabs.dev/ru/">
+<link rel="alternate" hreflang="x-default" href="https://keel.keellabs.dev/">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Keel">
+<!--oglocale-->
+<meta property="og:locale" content="vi_VN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="ru_RU">
+<!--/oglocale-->
+<meta property="og:url" content="https://keel.keellabs.dev/vi/">
+<meta property="og:title" content="Keel – Stack dev cục bộ của bạn, không cần Docker">
+<meta property="og:description" content="PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis và nhiều hơn, cài native chỉ với một cú nhấp. Miễn phí cho macOS, Windows và Linux.">
+<meta property="og:image" content="https://keel.keellabs.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1326">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Keel", "url": "https://keel.keellabs.dev/vi/", "description": "Stack phát triển web cục bộ không cần Docker: PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis, HTTPS cục bộ, tunnel và mail dev.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS, Windows, Linux", "inLanguage": "vi", "image": "https://keel.keellabs.dev/img/og.png", "downloadUrl": "https://keel.keellabs.dev/vi/#download", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Keel Labs", "url": "https://keellabs.dev/"}}</script>
+<link rel="icon" href="../img/keel-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../home.css">
+<style>:root { --your-system: "Máy của bạn"; }</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/vi/"><img src="../img/keel-64.png" alt="" width="30" height="30"><span>Keel</span></a>
+    <nav aria-label="Các mục">
+      <a href="#features">Tính năng</a>
+      <a href="#stack">Bên trong có gì</a>
+      <a href="#download">Tải về</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <!--langmenu--><details class="lang-menu"><summary aria-label="Ngôn ngữ / Language"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8ZM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4ZM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4H4.3Zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16Zm3-8h-3a8 8 0 0 1 4.4-3.6A15.7 15.7 0 0 0 8.1 8ZM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4Zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4Zm.3 5.6a15.7 15.7 0 0 0 1.4-3.6h3a8 8 0 0 1-4.4 3.6Zm1.7-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4h-3.4Z"/></svg><span>Ngôn ngữ</span></summary><ul><li><a href="../" hreflang="en" lang="en">English</a></li><li><a href="../vi/" hreflang="vi" lang="vi" aria-current="page">Tiếng Việt</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../pt/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li></ul></details><!--/langmenu-->
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Stack dev cục bộ của bạn, không cần Docker.</h1>
+      <div class="hero-grid">
+      <div>
+        <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis và hàng chục thứ khác, cài native chỉ với một cú nhấp. Trang web có HTTPS, tunnel và mail dev ngay trong một ứng dụng. Gỡ Keel đi và hệ thống của bạn trở lại y như cũ.</p>
+        <div class="cta">
+          <a class="button primary" id="primary-download" href="#download">Tải Keel</a>
+          <a class="button ghost" href="#features">Xem Keel làm được gì</a>
+        </div>
+        <p class="version-line">Miễn phí cho macOS, Windows và Linux. Phiên bản mới nhất <span data-version>1.0.2</span>, tự động cập nhật có chữ ký.</p>
+      </div>
+
+      <figure class="window" aria-label="Hình minh họa bảng điều khiển của Keel">
+        <div class="window-bar"><span></span><span></span><span></span><b>Keel</b></div>
+        <div class="window-body">
+          <div class="svc"><i class="dot on"></i><span class="name">Caddy</span><span class="meta">:8080 · :8443</span><span class="pill">Đang chạy</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">PHP 8.3</span><span class="meta">FPM</span><span class="pill">Đang chạy</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">MariaDB 11</span><span class="meta">:3306</span><span class="pill">Đang chạy</span></div>
+          <div class="svc"><i class="dot"></i><span class="name">Redis</span><span class="meta">:6379</span><span class="pill off">Đã dừng</span></div>
+          <div class="sites">
+            <p class="label">Trang web</p>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://shop.test<span class="tag">Laravel</span></div>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://blog.test<span class="tag">WordPress</span></div>
+          </div>
+          <pre class="term"><span class="p">$</span> php -v
+PHP 8.3 (cli) · via Keel PATH
+<span class="p">$</span> node -v
+v22 · via Keel PATH</pre>
+        </div>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
+  <section id="features" class="deep">
+    <div class="wrap">
+      <h2>Vì sao lập trình viên chuyển sang Keel</h2>
+      <p class="section-lead">Mọi thứ một stack web cục bộ cần, không có container nào phải trông chừng.</p>
+      <div class="features">
+        <article class="card"><h3>Native, không container</h3><p>Keel tải các bản binary thật và chạy trực tiếp. Không Docker Desktop, không VM, không chờ tải image, quạt không rú lên mỗi khi bạn mở một dự án.</p></article>
+        <article class="card"><h3>Sẵn sàng sau một trình hướng dẫn</h3><p>Chọn stack ban đầu: Web &amp; Full Stack, Modern JS &amp; API hoặc Minimal / Custom, rồi Keel cài và cấu hình toàn bộ trong một lần.</p></article>
+        <article class="card"><h3>Không để lại bừa bộn</h3><p>Gói, cấu hình và dữ liệu nằm trong thư mục riêng của Keel, tách khỏi Homebrew và PATH của hệ thống. Gỡ Keel là không còn gì sót lại.</p></article>
+        <article class="card"><h3>HTTPS thật trên <code>.test</code></h3><p>Tạo một trang web và nhận ngay virtual host, chứng chỉ cục bộ từ CA riêng của Keel và mục trong hosts, tất cả từ một biểu mẫu.</p></article>
+        <article class="card"><h3>Nhiều phiên bản, chạy song song</h3><p>Chạy nhiều phiên bản PHP, chỉnh <code>php.ini</code> và các extension bằng giao diện, đổi phiên bản theo từng trang web.</p></article>
+        <article class="card"><h3>Cả trong terminal của bạn</h3><p>Thêm Keel vào PATH để dùng <code>php</code>, <code>node</code>, <code>composer</code>, <code>mysql</code> trong mọi terminal, đúng phiên bản mà các trang web của bạn đang dùng.</p></article>
+        <article class="card"><h3>Chia sẻ trang web cục bộ</h3><p>Công khai một trang web qua Cloudflare Tunnel, bore, chisel, frp hoặc rathole mà không cần rời khỏi ứng dụng.</p></article>
+        <article class="card"><h3>Bắt mọi email</h3><p>Mailpit nhận mọi thứ ứng dụng của bạn gửi đi, nên email thử nghiệm không bao giờ đến hộp thư thật.</p></article>
+        <article class="card"><h3>Nói ngôn ngữ của bạn</h3><p>20 ngôn ngữ, hoạt động với VoiceOver và các trình đọc màn hình khác, điều hướng hoàn toàn bằng bàn phím, và tôn trọng tùy chọn Giảm chuyển động.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="wrap">
+      <h2>Những gì bạn có thể cài</h2>
+      <p class="section-lead">Các gói tùy chọn được tải từ nguồn chính thức và thuộc giấy phép của tác giả.</p>
+      <dl class="stack">
+        <div><dt>Máy chủ Web</dt><dd>Caddy · Nginx · Apache</dd></div>
+        <div><dt>Runtime</dt><dd>PHP (nhiều phiên bản) · Node.js · Bun · Python</dd></div>
+        <div><dt>Cơ sở dữ liệu</dt><dd>MariaDB · MySQL · PostgreSQL · MongoDB · Redis · Memcached</dd></div>
+        <div><dt>Công cụ dev</dt><dd>Composer · phpMyAdmin · Adminer · Mailpit</dd></div>
+        <div><dt>Đường hầm</dt><dd>Cloudflare Tunnel · bore · chisel · frp · rathole</dd></div>
+        <div><dt>Trang web</dt><dd>Virtual host · SSL cục bộ (Keel CA) · tệp hosts</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="wrap">
+      <h2>Tải về</h2>
+      <p class="section-lead" id="release-note">Miễn phí cho phát triển cục bộ, cả cá nhân lẫn thương mại.</p>
+      <div class="downloads">
+        <article class="card" data-os="macos">
+          <h3>macOS</h3>
+          <p class="meta">Apple Silicon và Intel</p>
+          <a class="button primary" data-asset="dmg" href="https://github.com/keel-app/keel-dev/releases/latest">Tải .dmg</a>
+        </article>
+        <article class="card" data-os="windows">
+          <h3>Windows</h3>
+          <p class="meta">Windows 10 và 11</p>
+          <a class="button primary" data-asset="msi-x64" href="https://github.com/keel-app/keel-dev/releases/latest">Trình cài đặt x64</a>
+          <a class="small" data-asset="msi-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">Trình cài đặt ARM64</a>
+        </article>
+        <article class="card" data-os="linux">
+          <h3>Linux</h3>
+          <p class="meta">x64 và ARM64</p>
+          <a class="button primary" data-asset="appimage-x64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage (x64)</a>
+          <span class="small-row">
+            <a class="small" data-asset="deb-x64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb x64</a>
+            <a class="small" data-asset="appimage-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage ARM64</a>
+            <a class="small" data-asset="deb-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb ARM64</a>
+          </span>
+        </article>
+      </div>
+      <p class="after">Sau đó mở Keel, chọn stack ban đầu trong trình hướng dẫn thiết lập và tạo trang web đầu tiên của bạn trong <strong>Trang web</strong>. Ghi chú phát hành và các phiên bản cũ: <a href="https://github.com/keel-app/keel-dev/releases">GitHub Releases</a>.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap narrow">
+      <h2>Câu hỏi thường gặp</h2>
+      <details>
+        <summary>Keel có thật sự miễn phí không?</summary>
+        <p>Có, cho phát triển cục bộ, cả cá nhân lẫn thương mại. Keel do một người làm ra; nếu nó giúp bạn tiết kiệm thời gian, bạn có thể ủng hộ ngay trong ứng dụng hoặc qua <a href="https://github.com/keel-app/keel-dev#-crypto-donations">trang dự án</a>.</p>
+      </details>
+      <details>
+        <summary>Tôi có cần Docker không?</summary>
+        <p>Không. Keel chạy trực tiếp các bản build native của từng máy chủ và cơ sở dữ liệu trên máy của bạn.</p>
+      </details>
+      <details>
+        <summary>Keel có xung đột với Homebrew hay PHP của hệ thống không?</summary>
+        <p>Không. Mọi thứ Keel cài đều nằm trong thư mục riêng của nó. Terminal của bạn chỉ thấy các phiên bản của Keel nếu bạn chọn thêm Keel vào PATH trong Cài đặt.</p>
+      </details>
+      <details>
+        <summary>Dữ liệu của tôi nằm ở đâu, và làm sao gỡ Keel hoàn toàn?</summary>
+        <p>Xóa ứng dụng, rồi xóa thư mục này:</p>
+        <ul>
+          <li>macOS: <code>~/Library/Application Support/Keel/</code></li>
+          <li>Windows: <code>%APPDATA%\com.keel.app\</code></li>
+          <li>Linux: <code>~/.local/share/com.keel.app/</code></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Cập nhật hoạt động thế nào?</summary>
+        <p>Keel kiểm tra phiên bản mới trong nền và cài các bản cập nhật có chữ ký khi bạn khởi động lại. Bạn cũng có thể kiểm tra trong Cài đặt → Ứng dụng.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>Keel được tạo bởi <a href="https://keellabs.dev">Keel Labs</a></span>
+    <span><a href="https://github.com/keel-app/keel-dev/blob/main/TERMS.md">Điều khoản</a> · <a href="https://github.com/keel-app/keel-dev/releases">Phát hành</a></span>
+  </div>
+</footer>
+
+<script>window.KEEL_I18N = {"download_for": "Tải cho {os}", "release_note": "Keel {version}. Miễn phí cho phát triển cục bộ, cả cá nhân lẫn thương mại."};</script>
+<script src="../site.js"></script>
+</body>
+</html>

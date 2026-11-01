@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keel – локальный стек для PHP, Node.js и баз данных без Docker</title>
+<meta name="description" content="Keel ставит и запускает PHP, Node.js, Caddy, Nginx, Apache, MariaDB, MySQL, PostgreSQL, Redis и не только на macOS, Windows и Linux. Нативно, изолированно, бесплатно. Без Docker.">
+<link rel="canonical" href="https://keel.keellabs.dev/ru/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://keel.keellabs.dev/">
+<link rel="alternate" hreflang="vi" href="https://keel.keellabs.dev/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://keel.keellabs.dev/zh/">
+<link rel="alternate" hreflang="ja" href="https://keel.keellabs.dev/ja/">
+<link rel="alternate" hreflang="ko" href="https://keel.keellabs.dev/ko/">
+<link rel="alternate" hreflang="es" href="https://keel.keellabs.dev/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://keel.keellabs.dev/pt/">
+<link rel="alternate" hreflang="ru" href="https://keel.keellabs.dev/ru/">
+<link rel="alternate" hreflang="x-default" href="https://keel.keellabs.dev/">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Keel">
+<!--oglocale-->
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="vi_VN">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<!--/oglocale-->
+<meta property="og:url" content="https://keel.keellabs.dev/ru/">
+<meta property="og:title" content="Keel – ваш локальный стек для разработки без Docker">
+<meta property="og:description" content="PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis и другое ставится нативно в один клик. Бесплатно для macOS, Windows и Linux.">
+<meta property="og:image" content="https://keel.keellabs.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1326">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Keel", "url": "https://keel.keellabs.dev/ru/", "description": "Локальный стек для веб-разработки без Docker: PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis, локальный HTTPS, туннели и почта для разработки.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS, Windows, Linux", "inLanguage": "ru", "image": "https://keel.keellabs.dev/img/og.png", "downloadUrl": "https://keel.keellabs.dev/ru/#download", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Keel Labs", "url": "https://keellabs.dev/"}}</script>
+<link rel="icon" href="../img/keel-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../home.css">
+<style>:root { --your-system: "Ваша система"; }</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/ru/"><img src="../img/keel-64.png" alt="" width="30" height="30"><span>Keel</span></a>
+    <nav aria-label="Разделы">
+      <a href="#features">Возможности</a>
+      <a href="#stack">Состав</a>
+      <a href="#download">Скачать</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <!--langmenu--><details class="lang-menu"><summary aria-label="Язык / Language"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8ZM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4ZM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4H4.3Zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16Zm3-8h-3a8 8 0 0 1 4.4-3.6A15.7 15.7 0 0 0 8.1 8ZM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4Zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4Zm.3 5.6a15.7 15.7 0 0 0 1.4-3.6h3a8 8 0 0 1-4.4 3.6Zm1.7-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4h-3.4Z"/></svg><span>Язык</span></summary><ul><li><a href="../" hreflang="en" lang="en">English</a></li><li><a href="../vi/" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../pt/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="../ru/" hreflang="ru" lang="ru" aria-current="page">Русский</a></li></ul></details><!--/langmenu-->
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Ваш локальный стек для разработки без Docker.</h1>
+      <div class="hero-grid">
+      <div>
+        <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis и ещё несколько десятков пакетов ставятся нативно в один клик. Сайты с HTTPS, туннели и почта для разработки собраны в одном приложении. Удалите Keel, и система будет точно такой же, как раньше.</p>
+        <div class="cta">
+          <a class="button primary" id="primary-download" href="#download">Скачать Keel</a>
+          <a class="button ghost" href="#features">Что он умеет</a>
+        </div>
+        <p class="version-line">Бесплатно для macOS, Windows и Linux. Последняя версия <span data-version>1.0.2</span>, с подписанными автоматическими обновлениями.</p>
+      </div>
+
+      <figure class="window" aria-label="Иллюстрация панели Keel">
+        <div class="window-bar"><span></span><span></span><span></span><b>Keel</b></div>
+        <div class="window-body">
+          <div class="svc"><i class="dot on"></i><span class="name">Caddy</span><span class="meta">:8080 · :8443</span><span class="pill">Работает</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">PHP 8.3</span><span class="meta">FPM</span><span class="pill">Работает</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">MariaDB 11</span><span class="meta">:3306</span><span class="pill">Работает</span></div>
+          <div class="svc"><i class="dot"></i><span class="name">Redis</span><span class="meta">:6379</span><span class="pill off">Остановлен</span></div>
+          <div class="sites">
+            <p class="label">Сайты</p>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://shop.test<span class="tag">Laravel</span></div>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://blog.test<span class="tag">WordPress</span></div>
+          </div>
+          <pre class="term"><span class="p">$</span> php -v
+PHP 8.3 (cli) · via Keel PATH
+<span class="p">$</span> node -v
+v22 · via Keel PATH</pre>
+        </div>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
+  <section id="features" class="deep">
+    <div class="wrap">
+      <h2>Почему разработчики переходят на Keel</h2>
+      <p class="section-lead">Всё, что нужно локальному веб-стеку, без контейнеров, за которыми надо присматривать.</p>
+      <div class="features">
+        <article class="card"><h3>Нативно, без контейнеров</h3><p>Keel скачивает настоящие бинарники и запускает их напрямую. Никакого Docker Desktop, VM и ожидания образов, и вентиляторы не взвывают при открытии проекта.</p></article>
+        <article class="card"><h3>Готово после одного мастера</h3><p>Выберите начальный стек: Web и Full Stack, Современный JS и API или Минимальный / Пользовательский, и Keel установит и настроит всё за один проход.</p></article>
+        <article class="card"><h3>Не оставляет мусора</h3><p>Пакеты, конфиги и данные лежат в собственной папке Keel, отдельно от Homebrew и системного PATH. Удалите Keel, и ничего не останется.</p></article>
+        <article class="card"><h3>Настоящий HTTPS на <code>.test</code></h3><p>Создайте сайт и получите виртуальный хост, локальный сертификат от собственного CA Keel и запись в hosts, и всё это из одной формы.</p></article>
+        <article class="card"><h3>Много версий рядом</h3><p>Запускайте несколько версий PHP, редактируйте <code>php.ini</code> и расширения в интерфейсе, переключайте версии для каждого сайта.</p></article>
+        <article class="card"><h3>И в вашем терминале</h3><p>Добавьте Keel в PATH и используйте <code>php</code>, <code>node</code>, <code>composer</code>, <code>mysql</code> в любом терминале, причём те же версии, что и на ваших сайтах.</p></article>
+        <article class="card"><h3>Покажите локальный сайт</h3><p>Откройте доступ к сайту через Cloudflare Tunnel, bore, chisel, frp или rathole, не выходя из приложения.</p></article>
+        <article class="card"><h3>Ловит все письма</h3><p>Mailpit перехватывает всё, что отправляет ваше приложение, так что тестовые письма не попадут в настоящие ящики.</p></article>
+        <article class="card"><h3>Говорит на вашем языке</h3><p>20 языков, поддержка VoiceOver и других экранных дикторов, полная навигация с клавиатуры и учёт настройки «Уменьшение движения».</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="wrap">
+      <h2>Что можно установить</h2>
+      <p class="section-lead">Дополнительные пакеты загружаются из официальных источников и распространяются на условиях лицензий их авторов.</p>
+      <dl class="stack">
+        <div><dt>Веб-серверы</dt><dd>Caddy · Nginx · Apache</dd></div>
+        <div><dt>Среды выполнения</dt><dd>PHP (несколько версий) · Node.js · Bun · Python</dd></div>
+        <div><dt>Базы данных</dt><dd>MariaDB · MySQL · PostgreSQL · MongoDB · Redis · Memcached</dd></div>
+        <div><dt>Инструменты</dt><dd>Composer · phpMyAdmin · Adminer · Mailpit</dd></div>
+        <div><dt>Туннели</dt><dd>Cloudflare Tunnel · bore · chisel · frp · rathole</dd></div>
+        <div><dt>Сайты</dt><dd>Виртуальные хосты · локальный SSL (Keel CA) · файл hosts</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="wrap">
+      <h2>Скачать</h2>
+      <p class="section-lead" id="release-note">Бесплатно для личной и коммерческой локальной разработки.</p>
+      <div class="downloads">
+        <article class="card" data-os="macos">
+          <h3>macOS</h3>
+          <p class="meta">Apple Silicon и Intel</p>
+          <a class="button primary" data-asset="dmg" href="https://github.com/keel-app/keel-dev/releases/latest">Скачать .dmg</a>
+        </article>
+        <article class="card" data-os="windows">
+          <h3>Windows</h3>
+          <p class="meta">Windows 10 и 11</p>
+          <a class="button primary" data-asset="msi-x64" href="https://github.com/keel-app/keel-dev/releases/latest">Установщик x64</a>
+          <a class="small" data-asset="msi-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">Установщик ARM64</a>
+        </article>
+        <article class="card" data-os="linux">
+          <h3>Linux</h3>
+          <p class="meta">x64 и ARM64</p>
+          <a class="button primary" data-asset="appimage-x64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage (x64)</a>
+          <span class="small-row">
+            <a class="small" data-asset="deb-x64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb x64</a>
+            <a class="small" data-asset="appimage-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage ARM64</a>
+            <a class="small" data-asset="deb-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb ARM64</a>
+          </span>
+        </article>
+      </div>
+      <p class="after">Затем откройте Keel, выберите начальный стек в мастере настройки и создайте первый сайт в разделе <strong>Сайты</strong>. Примечания к релизам и старые версии: <a href="https://github.com/keel-app/keel-dev/releases">GitHub Releases</a>.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap narrow">
+      <h2>Вопросы</h2>
+      <details>
+        <summary>Keel правда бесплатный?</summary>
+        <p>Да, для личной и коммерческой локальной разработки. Keel делает один человек; если он экономит вам время, можно отправить чаевые из приложения или со <a href="https://github.com/keel-app/keel-dev#-crypto-donations">страницы проекта</a>.</p>
+      </details>
+      <details>
+        <summary>Нужен ли мне Docker?</summary>
+        <p>Нет. Keel запускает нативные сборки каждого сервера и базы данных прямо на вашем компьютере.</p>
+      </details>
+      <details>
+        <summary>Не будет ли конфликтов с Homebrew или системным PHP?</summary>
+        <p>Нет. Всё, что ставит Keel, лежит в его собственной папке. Терминал увидит версии из Keel, только если вы сами добавите Keel в PATH в настройках.</p>
+      </details>
+      <details>
+        <summary>Где мои данные и как полностью удалить Keel?</summary>
+        <p>Удалите приложение, а затем эту папку:</p>
+        <ul>
+          <li>macOS: <code>~/Library/Application Support/Keel/</code></li>
+          <li>Windows: <code>%APPDATA%\com.keel.app\</code></li>
+          <li>Linux: <code>~/.local/share/com.keel.app/</code></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Как работают обновления?</summary>
+        <p>Keel проверяет наличие новых версий в фоне и устанавливает подписанные обновления при перезапуске. Проверить вручную можно в разделе «Настройки → Приложение».</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>Keel создан командой <a href="https://keellabs.dev">Keel Labs</a></span>
+    <span><a href="https://github.com/keel-app/keel-dev/blob/main/TERMS.md">Условия</a> · <a href="https://github.com/keel-app/keel-dev/releases">Релизы</a></span>
+  </div>
+</footer>
+
+<script>window.KEEL_I18N = {"download_for": "Скачать для {os}", "release_note": "Keel {version}. Бесплатно для личной и коммерческой локальной разработки."};</script>
+<script src="../site.js"></script>
+</body>
+</html>

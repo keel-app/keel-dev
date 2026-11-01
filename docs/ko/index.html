@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keel – Docker 없는 로컬 PHP, Node.js, DB 개발 환경</title>
+<meta name="description" content="Keel은 PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis 등을 macOS, Windows, Linux에 설치하고 실행합니다. 무료, Docker 불필요.">
+<link rel="canonical" href="https://keel.keellabs.dev/ko/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://keel.keellabs.dev/">
+<link rel="alternate" hreflang="vi" href="https://keel.keellabs.dev/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://keel.keellabs.dev/zh/">
+<link rel="alternate" hreflang="ja" href="https://keel.keellabs.dev/ja/">
+<link rel="alternate" hreflang="ko" href="https://keel.keellabs.dev/ko/">
+<link rel="alternate" hreflang="es" href="https://keel.keellabs.dev/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://keel.keellabs.dev/pt/">
+<link rel="alternate" hreflang="ru" href="https://keel.keellabs.dev/ru/">
+<link rel="alternate" hreflang="x-default" href="https://keel.keellabs.dev/">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Keel">
+<!--oglocale-->
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="vi_VN">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="ru_RU">
+<!--/oglocale-->
+<meta property="og:url" content="https://keel.keellabs.dev/ko/">
+<meta property="og:title" content="Keel – Docker 없는 로컬 개발 환경">
+<meta property="og:description" content="PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis 등을 클릭 한 번으로 네이티브 설치. macOS, Windows, Linux 무료.">
+<meta property="og:image" content="https://keel.keellabs.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1326">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Keel", "url": "https://keel.keellabs.dev/ko/", "description": "Docker 없는 로컬 웹 개발 환경: PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis, 로컬 HTTPS, 터널, 개발용 메일.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS, Windows, Linux", "inLanguage": "ko", "image": "https://keel.keellabs.dev/img/og.png", "downloadUrl": "https://keel.keellabs.dev/ko/#download", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Keel Labs", "url": "https://keellabs.dev/"}}</script>
+<link rel="icon" href="../img/keel-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../home.css">
+<style>:root { --your-system: "내 시스템"; }</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/ko/"><img src="../img/keel-64.png" alt="" width="30" height="30"><span>Keel</span></a>
+    <nav aria-label="섹션">
+      <a href="#features">기능</a>
+      <a href="#stack">구성 요소</a>
+      <a href="#download">다운로드</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <!--langmenu--><details class="lang-menu"><summary aria-label="언어 / Language"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8ZM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4ZM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4H4.3Zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16Zm3-8h-3a8 8 0 0 1 4.4-3.6A15.7 15.7 0 0 0 8.1 8ZM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4Zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4Zm.3 5.6a15.7 15.7 0 0 0 1.4-3.6h3a8 8 0 0 1-4.4 3.6Zm1.7-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4h-3.4Z"/></svg><span>언어</span></summary><ul><li><a href="../" hreflang="en" lang="en">English</a></li><li><a href="../vi/" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/" hreflang="ko" lang="ko" aria-current="page">한국어</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../pt/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li></ul></details><!--/langmenu-->
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Docker 없는 로컬 개발 환경.</h1>
+      <div class="hero-grid">
+      <div>
+        <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis를 비롯한 수십 가지 도구를 클릭 한 번으로 네이티브 설치합니다. HTTPS 사이트, 터널, 개발용 메일까지 한 앱에서 다룹니다. Keel을 지우면 시스템은 설치 전 그대로입니다.</p>
+        <div class="cta">
+          <a class="button primary" id="primary-download" href="#download">Keel 다운로드</a>
+          <a class="button ghost" href="#features">기능 살펴보기</a>
+        </div>
+        <p class="version-line">macOS, Windows, Linux 무료. 최신 버전 <span data-version>1.0.2</span>, 서명된 자동 업데이트를 지원합니다.</p>
+      </div>
+
+      <figure class="window" aria-label="Keel 대시보드 일러스트">
+        <div class="window-bar"><span></span><span></span><span></span><b>Keel</b></div>
+        <div class="window-body">
+          <div class="svc"><i class="dot on"></i><span class="name">Caddy</span><span class="meta">:8080 · :8443</span><span class="pill">실행 중</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">PHP 8.3</span><span class="meta">FPM</span><span class="pill">실행 중</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">MariaDB 11</span><span class="meta">:3306</span><span class="pill">실행 중</span></div>
+          <div class="svc"><i class="dot"></i><span class="name">Redis</span><span class="meta">:6379</span><span class="pill off">중지됨</span></div>
+          <div class="sites">
+            <p class="label">웹사이트</p>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://shop.test<span class="tag">Laravel</span></div>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://blog.test<span class="tag">WordPress</span></div>
+          </div>
+          <pre class="term"><span class="p">$</span> php -v
+PHP 8.3 (cli) · via Keel PATH
+<span class="p">$</span> node -v
+v22 · via Keel PATH</pre>
+        </div>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
+  <section id="features" class="deep">
+    <div class="wrap">
+      <h2>개발자들이 Keel로 옮기는 이유</h2>
+      <p class="section-lead">로컬 웹 개발에 필요한 모든 것을, 신경 쓸 컨테이너 없이.</p>
+      <div class="features">
+        <article class="card"><h3>컨테이너가 아닌 네이티브</h3><p>Keel은 실제 바이너리를 내려받아 바로 실행합니다. Docker Desktop도, VM도, 이미지 대기도 없고, 프로젝트를 열 때 팬이 요란하게 돌지도 않습니다.</p></article>
+        <article class="card"><h3>마법사 하나로 준비 완료</h3><p>초기 스택을 Web &amp; Full Stack, Modern JS &amp; API, 최소 / 사용자 지정 중에서 고르면 Keel이 한 번에 설치하고 구성합니다.</p></article>
+        <article class="card"><h3>흔적을 남기지 않음</h3><p>패키지, 설정, 데이터는 Homebrew와 시스템 PATH와는 별개로 Keel 전용 폴더에 저장됩니다. Keel을 삭제하면 아무것도 남지 않습니다.</p></article>
+        <article class="card"><h3><code>.test</code>에서 진짜 HTTPS</h3><p>사이트를 만들면 가상 호스트, Keel 자체 CA의 로컬 인증서, hosts 항목이 양식 하나로 만들어집니다.</p></article>
+        <article class="card"><h3>여러 버전을 나란히</h3><p>여러 PHP 버전을 함께 실행하고, <code>php.ini</code>와 확장을 화면에서 편집하며, 사이트별로 전환합니다.</p></article>
+        <article class="card"><h3>터미널에서도 그대로</h3><p>Keel을 PATH에 추가하면 어느 터미널에서든 <code>php</code>, <code>node</code>, <code>composer</code>, <code>mysql</code>을 사이트와 같은 버전으로 쓸 수 있습니다.</p></article>
+        <article class="card"><h3>로컬 사이트 공유</h3><p>앱을 떠나지 않고 Cloudflare Tunnel, bore, chisel, frp, rathole로 사이트를 외부에 공개합니다.</p></article>
+        <article class="card"><h3>모든 메일을 받아내기</h3><p>Mailpit이 앱에서 보낸 메일을 받아 주므로 테스트 메일이 실제 받은편지함에 도달하지 않습니다.</p></article>
+        <article class="card"><h3>내 언어로 사용</h3><p>20개 언어, VoiceOver 등 스크린 리더 지원, 완전한 키보드 탐색, 동작 줄이기 설정 존중.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="wrap">
+      <h2>설치할 수 있는 항목</h2>
+      <p class="section-lead">선택 패키지는 공식 배포처에서 내려받으며 라이선스는 각 제작자에게 있습니다.</p>
+      <dl class="stack">
+        <div><dt>웹 서버</dt><dd>Caddy · Nginx · Apache</dd></div>
+        <div><dt>런타임</dt><dd>PHP (여러 버전) · Node.js · Bun · Python</dd></div>
+        <div><dt>데이터베이스</dt><dd>MariaDB · MySQL · PostgreSQL · MongoDB · Redis · Memcached</dd></div>
+        <div><dt>개발 도구</dt><dd>Composer · phpMyAdmin · Adminer · Mailpit</dd></div>
+        <div><dt>터널</dt><dd>Cloudflare Tunnel · bore · chisel · frp · rathole</dd></div>
+        <div><dt>웹사이트</dt><dd>가상 호스트 · 로컬 SSL (Keel CA) · hosts 파일</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="wrap">
+      <h2>다운로드</h2>
+      <p class="section-lead" id="release-note">개인 및 상업용 로컬 개발에 무료입니다.</p>
+      <div class="downloads">
+        <article class="card" data-os="macos">
+          <h3>macOS</h3>
+          <p class="meta">Apple Silicon 및 Intel</p>
+          <a class="button primary" data-asset="dmg" href="https://github.com/keel-app/keel-dev/releases/latest">.dmg 다운로드</a>
+        </article>
+        <article class="card" data-os="windows">
+          <h3>Windows</h3>
+          <p class="meta">Windows 10 및 11</p>
+          <a class="button primary" data-asset="msi-x64" href="https://github.com/keel-app/keel-dev/releases/latest">x64 설치 프로그램</a>
+          <a class="small" data-asset="msi-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">ARM64 설치 프로그램</a>
+        </article>
+        <article class="card" data-os="linux">
+          <h3>Linux</h3>
+          <p class="meta">x64 및 ARM64</p>
+          <a class="button primary" data-asset="appimage-x64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage (x64)</a>
+          <span class="small-row">
+            <a class="small" data-asset="deb-x64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb x64</a>
+            <a class="small" data-asset="appimage-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage ARM64</a>
+            <a class="small" data-asset="deb-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb ARM64</a>
+          </span>
+        </article>
+      </div>
+      <p class="after">Keel을 열고 설정 마법사에서 초기 스택을 고른 뒤 <strong>웹사이트</strong>에서 첫 사이트를 만드세요. 릴리스 노트와 이전 버전은 <a href="https://github.com/keel-app/keel-dev/releases">GitHub Releases</a>에서 볼 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap narrow">
+      <h2>자주 묻는 질문</h2>
+      <details>
+        <summary>Keel은 정말 무료인가요?</summary>
+        <p>네, 개인 및 상업용 로컬 개발에 무료입니다. Keel은 한 사람이 만들고 있으며, 도움이 되었다면 앱이나 <a href="https://github.com/keel-app/keel-dev#-crypto-donations">프로젝트 페이지</a>에서 후원할 수 있습니다.</p>
+      </details>
+      <details>
+        <summary>Docker가 필요한가요?</summary>
+        <p>아니요. Keel은 각 서버와 데이터베이스의 네이티브 빌드를 컴퓨터에서 직접 실행합니다.</p>
+      </details>
+      <details>
+        <summary>Homebrew나 시스템 PHP와 충돌하지 않나요?</summary>
+        <p>충돌하지 않습니다. Keel이 설치하는 모든 것은 전용 폴더에 있습니다. 설정에서 Keel을 PATH에 추가해야만 터미널에서 Keel의 버전이 보입니다.</p>
+      </details>
+      <details>
+        <summary>데이터는 어디에 있고, Keel을 완전히 제거하려면 어떻게 하나요?</summary>
+        <p>앱을 삭제한 다음 이 폴더를 삭제하세요.</p>
+        <ul>
+          <li>macOS: <code>~/Library/Application Support/Keel/</code></li>
+          <li>Windows: <code>%APPDATA%\com.keel.app\</code></li>
+          <li>Linux: <code>~/.local/share/com.keel.app/</code></li>
+        </ul>
+      </details>
+      <details>
+        <summary>업데이트는 어떻게 되나요?</summary>
+        <p>Keel이 백그라운드에서 새 버전을 확인하고, 다시 시작할 때 서명된 업데이트를 설치합니다. 설정 → 애플리케이션에서 직접 확인할 수도 있습니다.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>Keel은 <a href="https://keellabs.dev">Keel Labs</a>가 만듭니다</span>
+    <span><a href="https://github.com/keel-app/keel-dev/blob/main/TERMS.md">이용약관</a> · <a href="https://github.com/keel-app/keel-dev/releases">릴리스</a></span>
+  </div>
+</footer>
+
+<script>window.KEEL_I18N = {"download_for": "{os}용 다운로드", "release_note": "Keel {version}. 개인 및 상업용 로컬 개발에 무료입니다."};</script>
+<script src="../site.js"></script>
+</body>
+</html>

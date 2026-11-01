@@ -11,6 +11,11 @@
     "deb-arm64": /_arm64\.deb$/,
   };
   const NAMES = { macos: "macOS", windows: "Windows", linux: "Linux" };
+  // Page text comes from the page itself (window.KEEL_I18N, set per language by tools/build_site.py); English is the fallback.
+  const T = Object.assign({
+    download_for: "Download for {os}",
+    release_note: "Keel {version}. Free for personal and commercial local development.",
+  }, window.KEEL_I18N || {});
 
   function detect() {
     const ua = navigator.userAgent;
@@ -49,12 +54,12 @@
       if (urls[a.dataset.asset]) a.href = urls[a.dataset.asset];
     });
     const note = document.getElementById("release-note");
-    note.textContent = `Keel ${version}. Free for personal and commercial local development.`;
+    note.textContent = T.release_note.replace("{version}", version);
     if (sys) {
       const key = primaryAsset(sys), primary = document.getElementById("primary-download");
       if (urls[key]) {
         primary.href = urls[key];
-        primary.textContent = `Download for ${NAMES[sys.os]}`;
+        primary.textContent = T.download_for.replace("{os}", NAMES[sys.os]);
       }
     }
   }

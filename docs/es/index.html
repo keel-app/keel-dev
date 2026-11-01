@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keel – Entorno local de PHP, Node.js y bases de datos sin Docker</title>
+<meta name="description" content="Keel instala y ejecuta PHP, Node.js, Caddy, Nginx, Apache, MariaDB, MySQL, PostgreSQL, Redis y más en macOS, Windows y Linux. Nativo, aislado y gratis. Sin Docker.">
+<link rel="canonical" href="https://keel.keellabs.dev/es/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://keel.keellabs.dev/">
+<link rel="alternate" hreflang="vi" href="https://keel.keellabs.dev/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://keel.keellabs.dev/zh/">
+<link rel="alternate" hreflang="ja" href="https://keel.keellabs.dev/ja/">
+<link rel="alternate" hreflang="ko" href="https://keel.keellabs.dev/ko/">
+<link rel="alternate" hreflang="es" href="https://keel.keellabs.dev/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://keel.keellabs.dev/pt/">
+<link rel="alternate" hreflang="ru" href="https://keel.keellabs.dev/ru/">
+<link rel="alternate" hreflang="x-default" href="https://keel.keellabs.dev/">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Keel">
+<!--oglocale-->
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="vi_VN">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="ru_RU">
+<!--/oglocale-->
+<meta property="og:url" content="https://keel.keellabs.dev/es/">
+<meta property="og:title" content="Keel – Tu entorno de desarrollo local, sin Docker">
+<meta property="og:description" content="PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis y más, instalados de forma nativa con un clic. Gratis para macOS, Windows y Linux.">
+<meta property="og:image" content="https://keel.keellabs.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1326">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Keel", "url": "https://keel.keellabs.dev/es/", "description": "Entorno de desarrollo web local sin Docker: PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis, HTTPS local, túneles y correo de desarrollo.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS, Windows, Linux", "inLanguage": "es", "image": "https://keel.keellabs.dev/img/og.png", "downloadUrl": "https://keel.keellabs.dev/es/#download", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Keel Labs", "url": "https://keellabs.dev/"}}</script>
+<link rel="icon" href="../img/keel-64.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../home.css">
+<style>:root { --your-system: "Tu sistema"; }</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/es/"><img src="../img/keel-64.png" alt="" width="30" height="30"><span>Keel</span></a>
+    <nav aria-label="Secciones">
+      <a href="#features">Funciones</a>
+      <a href="#stack">Qué incluye</a>
+      <a href="#download">Descargar</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <!--langmenu--><details class="lang-menu"><summary aria-label="Idioma / Language"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8ZM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4ZM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4H4.3Zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16Zm3-8h-3a8 8 0 0 1 4.4-3.6A15.7 15.7 0 0 0 8.1 8ZM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4Zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4Zm.3 5.6a15.7 15.7 0 0 0 1.4-3.6h3a8 8 0 0 1-4.4 3.6Zm1.7-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4h-3.4Z"/></svg><span>Idioma</span></summary><ul><li><a href="../" hreflang="en" lang="en">English</a></li><li><a href="../vi/" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li><li><a href="../es/" hreflang="es" lang="es" aria-current="page">Español</a></li><li><a href="../pt/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li></ul></details><!--/langmenu-->
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Tu entorno de desarrollo local, sin Docker.</h1>
+      <div class="hero-grid">
+      <div>
+        <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis y decenas de paquetes más, instalados de forma nativa con un clic. Sitios con HTTPS, túneles y correo de desarrollo en la misma app. Si quitas Keel, tu sistema queda exactamente como estaba.</p>
+        <div class="cta">
+          <a class="button primary" id="primary-download" href="#download">Descargar Keel</a>
+          <a class="button ghost" href="#features">Ver qué hace</a>
+        </div>
+        <p class="version-line">Gratis para macOS, Windows y Linux. Última versión <span data-version>1.0.2</span>, con actualizaciones automáticas firmadas.</p>
+      </div>
+
+      <figure class="window" aria-label="Ilustración del panel de Keel">
+        <div class="window-bar"><span></span><span></span><span></span><b>Keel</b></div>
+        <div class="window-body">
+          <div class="svc"><i class="dot on"></i><span class="name">Caddy</span><span class="meta">:8080 · :8443</span><span class="pill">En ejecución</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">PHP 8.3</span><span class="meta">FPM</span><span class="pill">En ejecución</span></div>
+          <div class="svc"><i class="dot on"></i><span class="name">MariaDB 11</span><span class="meta">:3306</span><span class="pill">En ejecución</span></div>
+          <div class="svc"><i class="dot"></i><span class="name">Redis</span><span class="meta">:6379</span><span class="pill off">Detenido</span></div>
+          <div class="sites">
+            <p class="label">Sitios web</p>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://shop.test<span class="tag">Laravel</span></div>
+            <div class="site"><span class="lock" aria-hidden="true">●</span>https://blog.test<span class="tag">WordPress</span></div>
+          </div>
+          <pre class="term"><span class="p">$</span> php -v
+PHP 8.3 (cli) · via Keel PATH
+<span class="p">$</span> node -v
+v22 · via Keel PATH</pre>
+        </div>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
+  <section id="features" class="deep">
+    <div class="wrap">
+      <h2>Por qué los desarrolladores se pasan a Keel</h2>
+      <p class="section-lead">Todo lo que necesita un entorno web local, sin contenedores que vigilar.</p>
+      <div class="features">
+        <article class="card"><h3>Nativo, sin contenedores</h3><p>Keel descarga binarios reales y los ejecuta directamente. Sin Docker Desktop, sin VM, sin esperar imágenes y sin ventiladores a tope al abrir un proyecto.</p></article>
+        <article class="card"><h3>Listo con un asistente</h3><p>Elige un stack inicial, Web y Full Stack, JS moderno y API o Mínimo / Personalizado, y Keel lo instala y lo configura todo de una vez.</p></article>
+        <article class="card"><h3>No deja rastro</h3><p>Paquetes, configuraciones y datos viven en la carpeta propia de Keel, aparte de Homebrew y del PATH de tu sistema. Desinstala Keel y no queda nada.</p></article>
+        <article class="card"><h3>HTTPS real en <code>.test</code></h3><p>Crea un sitio y obtén un host virtual, un certificado local de la CA propia de Keel y la entrada en el archivo hosts, todo desde un solo formulario.</p></article>
+        <article class="card"><h3>Varias versiones, en paralelo</h3><p>Ejecuta varias versiones de PHP, edita <code>php.ini</code> y las extensiones de forma visual y cambia de versión por sitio.</p></article>
+        <article class="card"><h3>También en tu terminal</h3><p>Añade Keel al PATH y usa <code>php</code>, <code>node</code>, <code>composer</code> y <code>mysql</code> en cualquier terminal, con las mismas versiones que usan tus sitios.</p></article>
+        <article class="card"><h3>Comparte un sitio local</h3><p>Publica un sitio con Cloudflare Tunnel, bore, chisel, frp o rathole, sin salir de la app.</p></article>
+        <article class="card"><h3>Captura todos los correos</h3><p>Mailpit recoge lo que envía tu app, así los correos de prueba nunca llegan a una bandeja de entrada real.</p></article>
+        <article class="card"><h3>Habla tu idioma</h3><p>20 idiomas, compatible con VoiceOver y otros lectores de pantalla, navegación completa con teclado y respeto por la opción de reducir movimiento.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="wrap">
+      <h2>Qué puedes instalar</h2>
+      <p class="section-lead">Los paquetes opcionales se descargan de sus fuentes oficiales y sus autores los licencian.</p>
+      <dl class="stack">
+        <div><dt>Servidores web</dt><dd>Caddy · Nginx · Apache</dd></div>
+        <div><dt>Entornos de ejecución</dt><dd>PHP (varias versiones) · Node.js · Bun · Python</dd></div>
+        <div><dt>Bases de datos</dt><dd>MariaDB · MySQL · PostgreSQL · MongoDB · Redis · Memcached</dd></div>
+        <div><dt>Herramientas de desarrollo</dt><dd>Composer · phpMyAdmin · Adminer · Mailpit</dd></div>
+        <div><dt>Túneles</dt><dd>Cloudflare Tunnel · bore · chisel · frp · rathole</dd></div>
+        <div><dt>Sitios web</dt><dd>Hosts virtuales · SSL local (CA de Keel) · archivo hosts</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="wrap">
+      <h2>Descargar</h2>
+      <p class="section-lead" id="release-note">Gratis para desarrollo local personal y comercial.</p>
+      <div class="downloads">
+        <article class="card" data-os="macos">
+          <h3>macOS</h3>
+          <p class="meta">Apple Silicon e Intel</p>
+          <a class="button primary" data-asset="dmg" href="https://github.com/keel-app/keel-dev/releases/latest">Descargar .dmg</a>
+        </article>
+        <article class="card" data-os="windows">
+          <h3>Windows</h3>
+          <p class="meta">Windows 10 y 11</p>
+          <a class="button primary" data-asset="msi-x64" href="https://github.com/keel-app/keel-dev/releases/latest">Instalador x64</a>
+          <a class="small" data-asset="msi-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">Instalador ARM64</a>
+        </article>
+        <article class="card" data-os="linux">
+          <h3>Linux</h3>
+          <p class="meta">x64 y ARM64</p>
+          <a class="button primary" data-asset="appimage-x64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage (x64)</a>
+          <span class="small-row">
+            <a class="small" data-asset="deb-x64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb x64</a>
+            <a class="small" data-asset="appimage-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">AppImage ARM64</a>
+            <a class="small" data-asset="deb-arm64" href="https://github.com/keel-app/keel-dev/releases/latest">.deb ARM64</a>
+          </span>
+        </article>
+      </div>
+      <p class="after">Después abre Keel, elige un stack inicial en el asistente de configuración y crea tu primer sitio en <strong>Sitios web</strong>. Notas de versión y versiones anteriores: <a href="https://github.com/keel-app/keel-dev/releases">GitHub Releases</a>.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap narrow">
+      <h2>Preguntas</h2>
+      <details>
+        <summary>¿Keel es realmente gratis?</summary>
+        <p>Sí, para desarrollo local personal y comercial. Keel lo hace una sola persona; si te ahorra tiempo, puedes dejar una propina desde la app o desde la <a href="https://github.com/keel-app/keel-dev#-crypto-donations">página del proyecto</a>.</p>
+      </details>
+      <details>
+        <summary>¿Necesito Docker?</summary>
+        <p>No. Keel ejecuta directamente en tu equipo las compilaciones nativas de cada servidor y base de datos.</p>
+      </details>
+      <details>
+        <summary>¿Choca con Homebrew o con el PHP de mi sistema?</summary>
+        <p>No. Todo lo que instala Keel vive en su propia carpeta. Tu terminal solo ve las versiones de Keel si decides añadir Keel al PATH en Ajustes.</p>
+      </details>
+      <details>
+        <summary>¿Dónde están mis datos y cómo elimino Keel por completo?</summary>
+        <p>Borra la app y después esta carpeta:</p>
+        <ul>
+          <li>macOS: <code>~/Library/Application Support/Keel/</code></li>
+          <li>Windows: <code>%APPDATA%\com.keel.app\</code></li>
+          <li>Linux: <code>~/.local/share/com.keel.app/</code></li>
+        </ul>
+      </details>
+      <details>
+        <summary>¿Cómo funcionan las actualizaciones?</summary>
+        <p>Keel busca versiones nuevas en segundo plano e instala las actualizaciones firmadas al reiniciarlo. También puedes comprobarlo en Ajustes → Aplicación.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>Keel está hecho por <a href="https://keellabs.dev">Keel Labs</a></span>
+    <span><a href="https://github.com/keel-app/keel-dev/blob/main/TERMS.md">Términos</a> · <a href="https://github.com/keel-app/keel-dev/releases">Versiones</a></span>
+  </div>
+</footer>
+
+<script>window.KEEL_I18N = {"download_for": "Descargar para {os}", "release_note": "Keel {version}. Gratis para desarrollo local personal y comercial."};</script>
+<script src="../site.js"></script>
+</body>
+</html>
