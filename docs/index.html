@@ -21,8 +21,8 @@
 <link rel="icon" href="img/keel-64.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
 
@@ -40,10 +40,10 @@
 
 <main>
   <section class="hero">
-    <div class="wrap hero-grid">
+    <div class="wrap">
+      <h1>Your local dev stack, without Docker.</h1>
+      <div class="hero-grid">
       <div>
-        <p class="eyebrow">Free · macOS · Windows · Linux</p>
-        <h1>Your local dev stack, <span class="grad">without Docker</span>.</h1>
         <p class="lead">PHP, Node.js, Caddy, Nginx, Apache, MariaDB, PostgreSQL, Redis and dozens more, installed
           natively in a click. Sites with HTTPS, tunnels and dev mail in the same app. Remove Keel and your
           system is exactly as it was.</p>
@@ -51,7 +51,7 @@
           <a class="button primary" id="primary-download" href="#download">Download Keel</a>
           <a class="button ghost" href="#features">See what it does</a>
         </div>
-        <p class="version-line">Latest version <span data-version>1.0.2</span> · signed automatic updates</p>
+        <p class="version-line">Free for macOS, Windows and Linux. Latest version <span data-version>1.0.2</span>, with signed automatic updates.</p>
       </div>
 
       <figure class="window" aria-label="Illustration of the Keel dashboard">
@@ -72,14 +72,17 @@ PHP 8.3 (cli) · via Keel PATH
 v22 · via Keel PATH</pre>
         </div>
       </figure>
+      </div>
     </div>
   </section>
 
-  <section id="features" class="section alt">
+  <svg class="waterline" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22C120 4 240 40 360 22S600 4 720 22s240 18 360 0 240-18 360 0V44H0z"/></svg>
+
+  <section id="features" class="deep">
     <div class="wrap">
       <h2>Why developers switch to Keel</h2>
       <p class="section-lead">Everything a local web stack needs, without containers to babysit.</p>
-      <div class="cards">
+      <div class="features">
         <article class="card">
           <h3>Native, not containers</h3>
           <p>Keel downloads real binaries and runs them directly. No Docker Desktop, no VM, no waiting for images,
@@ -141,11 +144,11 @@ v22 · via Keel PATH</pre>
     </div>
   </section>
 
-  <section id="download" class="section alt">
+  <section id="download" class="section">
     <div class="wrap">
       <h2>Download</h2>
       <p class="section-lead" id="release-note">Free for personal and commercial local development.</p>
-      <div class="cards downloads">
+      <div class="downloads">
         <article class="card" data-os="macos">
           <h3>macOS</h3>
           <p class="meta">Apple Silicon and Intel</p>
